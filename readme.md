@@ -2,17 +2,15 @@
 ## Technology
 
 - PHP version > 7.2.*
-- Laravel 5.8.*.
+- Laravel 7.2.*.
 - MySQL 5.7.* or MariaDB 10.1.*
-- Line Message API
-- Https
 - wkhtmltopdf (Export PDF)
 ## Install
 
 **1.Clone source code with SSH**
 
 ```shell
-$ git clone git@bitbucket.org:user/template.git
+$ git clone https://github.com/1242035/laravel-app-template.git
 ```
 
 **2.Run composer & config file `.env`**
@@ -34,16 +32,10 @@ DB_PASSWORD=
 ```
 
 **3.Database & Migrate**
-- Data master(Market, Store, Category)
 ```shell
 $ php artisan migrate
 $ php artisan db:seed
 ```
-- Data develop(Table Order, User, Supplier, Product)
-```shell
-$ php artisan db:seed --class=DevelopSeeder
-```
-
 **4.Config apache & Start**
 
 ```apacheconfig
