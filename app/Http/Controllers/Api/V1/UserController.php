@@ -9,7 +9,7 @@ use App\Http\Requests\Api\V1\User\EditRequest;
 use App\Http\Requests\Api\V1\User\StoreRequest;
 use App\Http\Resources\Api\V1\User\UserResource;
 
-use App\Repositories\UserRepository;
+use App\Repositories\Api\UserRepository;
 
 class UserController extends Controller
 {

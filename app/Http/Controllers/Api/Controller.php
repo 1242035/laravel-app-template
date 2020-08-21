@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-abstract class Controller extends \App\Http\Controllers\Controller
+abstract class Controller extends \App\Http\Controllers\ApiController
 {
     
 }

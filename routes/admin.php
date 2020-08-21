@@ -13,21 +13,11 @@
 
 
 Route::group([
-    'prefix'    => 'admin',
     'as'        => 'admin.',
     'namespace' => 'Admin',
 ], function () {
 
-    Route::get('/', function () {
-        return redirect()->route('admin.store.index');
-    })->name('home');
-
-    Route::get('login', 'LoginController@showLoginForm')->name('login-form');
+    Route::get('/', 'LoginController@showLoginForm')->name('login-form');
     Route::post('login', 'LoginController@login')->name('login');
     Route::get('logout', 'LoginController@logout')->name('logout');
-
-    Route::group(['prefix' => 'imports', 'as' => 'imports.'], function () {
-        Route::post('/{type}/status', 'ImportController@checkStatus')->name('checkStatus');
-        Route::post('/example', 'ImportController@example')->name('examples');
-    });
 });

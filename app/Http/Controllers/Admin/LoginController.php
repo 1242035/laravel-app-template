@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
-use Auth;
 
 class LoginController extends BaseController
 {
     public function showLoginForm()
     {
-        if (Auth::guard('admin')->check()) {
+        if (auth()->guard('admin')->check()) {
             return redirect(route('admin.store.index'));
         }
         return view('admin.login.login');
@@ -26,8 +25,8 @@ class LoginController extends BaseController
         $cridentials = $request->only('email', 'password');
         $remember = ($request->remember) ? true : false;
 
-        if (Auth::guard('admin')->attempt($cridentials, $remember)) {
-            AdminUser::where('email',$request->get('email'))
+        if (auth()->guard('admin')->attempt($cridentials, $remember)) {
+            Admin::where('email',$request->get('email'))
                 ->update(['last_logged_in_at'=> now()]);
             return redirect()->route('admin.store.index');
         }
@@ -37,7 +36,7 @@ class LoginController extends BaseController
 
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        auth()->guard('admin')->logout();
 
         return redirect()->route('admin.login-form');
     }

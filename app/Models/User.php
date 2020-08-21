@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Order;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
@@ -21,7 +20,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'role',
+        'first_name',
+        'last_name',
         'status'
     ];
 
@@ -43,13 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function customer()
-    // {
-    //     return $this->hasOne('App\Models\Customer');
-    // }
-
+    
     public function findForPassport($username)
     {
-        return $this->where('username', $username)->orWhere('email',$username)->first();
+        return $this->where('username', $username)->orWhere('email', $username)->first();
     }
 }

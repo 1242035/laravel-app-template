@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
-abstract class Controller extends \App\Http\Controllers\Api\Controller
+abstract class ApiController extends \App\Http\Controllers\Controller
 {
     protected $repository;
 
