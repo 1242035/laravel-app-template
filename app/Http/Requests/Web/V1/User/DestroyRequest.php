@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\Web\User;
+namespace App\Http\Requests\Web\V1\User;
 
 class DestroyRequest extends BaseRequest
 {
