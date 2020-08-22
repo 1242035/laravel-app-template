@@ -9,7 +9,7 @@ class CreateUser extends Base
      *
      * @var string
      */
-    protected $signature = 'v1:create-user';
+    protected $signature = 'v1:create-user {email : user email} {username : username} {password : user password}';
 
     /**
      * The console command description.
@@ -35,17 +35,17 @@ class CreateUser extends Base
      */
     public function handle()
     {
-        $email      = $this->input('What is you admin email?');
-        $username   = $this->input('What is you admin username?');
-        $password   = $this->input('What is you admin password?');
-        $repository = \App\Repositories\Admin\UserRepository();
+        $email      = $this->argument('email');
+        $username   = $this->argument('username');
+        $password   = $this->argument('password');
+        $repository = new \App\Repositories\Admin\UserRepository();
 
         $user = $repository->store([
             'email'    => $email,
             'password' => $password,
             'username' => $username
         ]);
-
-        return $user;
+        
+        return $user->id ? 1 : 0;
     }
 }

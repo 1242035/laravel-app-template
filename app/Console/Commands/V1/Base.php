@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Command\V1;
+namespace App\Console\Commands\V1;
 
-abstract class Base extends \App\Console\Command\Base
+abstract class Base extends \App\Console\Commands\Base
 {
     
 }
