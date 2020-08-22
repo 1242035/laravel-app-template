@@ -17,10 +17,12 @@ class CreateAdminTable extends Migration
             $table->id();
             $table->string('username', 50)->unique();
             $table->string('email', 256)->unique();
-            $table->text('password');
+            $table->string('password');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->unsignedSmallInteger('status')->default(0);
+            $table->unsignedSmallInteger('role')->default(0);
+            $table->unsignedSmallInteger('is_admin')->default(1);
             $table->timestamp('last_logged_in_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
