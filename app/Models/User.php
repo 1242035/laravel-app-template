@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements UserInterface
 {
     use HasApiTokens, HasRoles, Notifiable;
 
@@ -48,5 +48,15 @@ class User extends Authenticatable
     public function findForPassport($username)
     {
         return $this->where('username', $username)->orWhere('email', $username)->first();
+    }
+
+    public function isSuperAdmin() 
+    {
+        return false;
+    }
+
+    public function isAdminAccount() 
+    {
+        return false;
     }
 }
