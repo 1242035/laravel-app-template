@@ -10,13 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-//Auth::routes();
-Route::group([
-    'prefix' => '',
-    'as' => 'web.',
-    'namespace' => 'Web',
-], function () {
-    Route::get('/', 'HomeController@index')->name('home');
-});
+Route::get('/', function(){
+    return 'Hello!!!';
+})->name('home');

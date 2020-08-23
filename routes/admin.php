@@ -12,12 +12,4 @@
 */
 
 
-Route::group([
-    'as'        => 'admin.',
-    'namespace' => 'Admin',
-], function () {
-
-    Route::get('/', 'LoginController@showLoginForm')->name('login-form');
-    Route::post('login', 'LoginController@login')->name('login');
-    Route::get('logout', 'LoginController@logout')->name('logout');
-});
+Route::middleware('auth:admin')->resource('users', 'UserController');

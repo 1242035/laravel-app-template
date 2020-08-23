@@ -37,5 +37,17 @@ class AdminRepository extends \App\Repositories\Base\AdminRepository
     public function getAll($params = [], $page = 1, $limit = 25)
     {
         return Admin::paginate( $limit );
-    }   
+    }
+
+    public function resetPassword($email, $password)
+    {
+        $item = Admin::find(['email' => $email])->first();
+        if( isset( $item->id ) )
+        {
+            $item->update(['password' => \Hash::make( $password )] );
+            return $item;
+        }
+
+        return null;
+    }
 }

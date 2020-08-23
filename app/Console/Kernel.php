@@ -15,6 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\V1\CreateAdminUser::class,
         \App\Console\Commands\V1\CreateUser::class,
+        \App\Console\Commands\V1\ResetAdminUserPassword::class,
+        \App\Console\Commands\V1\ResetUserPassword::class,
     ];
 
     /**

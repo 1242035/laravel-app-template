@@ -2,20 +2,7 @@
 
 namespace App\Http\Resources\Api;
 
-use Illuminate\Http\Resources\Json\JsonResource;
-
-abstract class BaseResource extends JsonResource
+abstract class BaseResource extends \App\Http\Resources\Api\BaseResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function toArray($request)
-    {
-        return [
-           
-        ];
-    }
+    
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Api\V1;
+namespace App\Http\Resources\Base\V1\User;
 
 abstract class BaseResource extends \App\Http\Resources\Base\V1\BaseResource
 {

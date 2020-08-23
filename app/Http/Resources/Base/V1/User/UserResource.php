@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Api\V1\User;
+namespace App\Http\Resources\Base\V1\User;
 
 class UserResource extends BaseResource
 {
