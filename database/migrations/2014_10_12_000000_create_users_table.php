@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('status')->default(0);
             $table->unsignedSmallInteger('is_admin')->default(0);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

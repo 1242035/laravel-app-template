@@ -11,5 +11,5 @@
 |
 */
 
-    
+//Route::middleware('auth:api')->get('roles', 'RoleController@roles')->name('get_roles');
 Route::middleware('auth:api')->resource('users', 'UserController');

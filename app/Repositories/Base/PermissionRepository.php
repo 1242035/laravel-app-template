@@ -21,4 +21,9 @@ abstract class PermissionRepository extends BaseRepository
     {
         return Permission::paginate( $limit );
     }
+
+    public function update(array $data, $id)
+    {
+        return null;
+    }
 }

@@ -24,6 +24,7 @@ class CreateAdminTable extends Migration
             $table->unsignedSmallInteger('is_admin')->default(1);
             $table->timestamp('last_logged_in_at')->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

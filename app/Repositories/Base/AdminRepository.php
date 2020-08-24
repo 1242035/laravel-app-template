@@ -4,7 +4,6 @@ namespace App\Repositories\Base;
 
 
 use App\Models\Admin;
-use Hash;
 
 abstract class AdminRepository extends BaseRepository
 {

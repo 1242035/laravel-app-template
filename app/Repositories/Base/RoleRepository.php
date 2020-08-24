@@ -21,4 +21,9 @@ abstract class RoleRepository extends BaseRepository
     {
         return Role::paginate( $limit );
     }
+
+    public function update(array $data, $id)
+    {
+        return null;
+    }
 }

@@ -11,5 +11,7 @@
 |
 */
 
-
+Route::middleware('auth:admin')->resource('roles', 'RoleController');
+Route::middleware('auth:admin')->resource('permissions', 'PermissionController');
 Route::middleware('auth:admin')->resource('users', 'UserController');
+Route::middleware('auth:admin')->resource('admins', 'AdminController');

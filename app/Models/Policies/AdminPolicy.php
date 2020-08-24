@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MOdels\Policies;
+namespace App\Models\Policies;
 
 use App\Models\Admin;
 

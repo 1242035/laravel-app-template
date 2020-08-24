@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin\V1;
 
-use App\Http\Requests\Admin\V1\User\IndexRequest;
-use App\Http\Requests\Admin\V1\User\UpdateRequest;
-use App\Http\Requests\Admin\V1\User\DestroyRequest;
-use App\Http\Requests\Admin\V1\User\EditRequest;
-use App\Http\Requests\Admin\V1\User\StoreRequest;
-use App\Http\Resources\Admin\V1\UserResource as ItemResource;
+use App\Http\Requests\Admin\V1\Admin\IndexRequest;
+use App\Http\Requests\Admin\V1\Admin\UpdateRequest;
+use App\Http\Requests\Admin\V1\Admin\DestroyRequest;
+use App\Http\Requests\Admin\V1\Admin\EditRequest;
+use App\Http\Requests\Admin\V1\Admin\StoreRequest;
+use App\Http\Resources\Admin\V1\AdminResource as ItemResource;
 
-use App\Repositories\Admin\UserRepository;
+use App\Repositories\Admin\AdminRepository;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
-    public function __construct(UserRepository $repository)
+    public function __construct(AdminRepository $repository)
     {
         $this->repository = $repository;
     }
