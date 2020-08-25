@@ -43,7 +43,8 @@ class CreateAdminUser extends Base
         $user = $repository->store([
             'email'    => $email,
             'password' => $password,
-            'username' => $username
+            'username' => $username,
+            'status'   => 1
         ]);
 
         return $user->id ? 1 : 0;

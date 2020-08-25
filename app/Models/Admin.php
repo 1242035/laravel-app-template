@@ -18,12 +18,13 @@ class Admin extends Authenticatable implements UserInterface
      * @var array
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
         'username',
         'email',
+        'phone',
         'password',
         'status',
+        'first_name',
+        'last_name',
         'last_logged_in_at',
     ];
 
@@ -42,7 +43,7 @@ class Admin extends Authenticatable implements UserInterface
 
     public function findForPassport($username)
     {
-        return $this->where('username', $username)->orWhere('email', $username)->first();
+        return $this->where('username', $username)->orWhere('email', $username)->orWhere('phone', $username)->first();
     }
 
     public function isSuperAdmin() 

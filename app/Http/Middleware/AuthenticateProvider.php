@@ -14,7 +14,7 @@ class AuthenticateProvider
             $provider = 'api';
         }
         
-        config('auth.defaults.guard', $provider);
+        //config('auth.defaults.guard', $provider);
 
         return $next($request);
     }

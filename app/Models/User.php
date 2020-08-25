@@ -21,6 +21,7 @@ class User extends Authenticatable implements UserInterface
     protected $fillable = [
         'username',
         'email',
+        'phone',
         'password',
         'first_name',
         'last_name',
@@ -48,7 +49,7 @@ class User extends Authenticatable implements UserInterface
     
     public function findForPassport($username)
     {
-        return $this->where('username', $username)->orWhere('email', $username)->first();
+        return $this->where('username', $username)->orWhere('email', $username)->orWhere('phone', $username)->first();
     }
 
     public function isSuperAdmin() 

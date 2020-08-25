@@ -42,6 +42,6 @@ class UserRepository extends BaseRepository
 
     public function getAll($params = [], $page = 1, $limit = 25)
     {
-        return User::paginate( $limit );
+        return User::simplePaginate( $limit );
     }
 }
