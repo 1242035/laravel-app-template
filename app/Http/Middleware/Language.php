@@ -15,7 +15,7 @@ class Language
      */
     public function handle($request, Closure $next)
     {
-        $language = $request->header('X-Request-Language');
+        $lang = $request->header('X-Request-Language');
 
         if( !$this->support( $lang ) ) 
         {
