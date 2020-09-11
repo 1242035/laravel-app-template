@@ -11,6 +11,6 @@ abstract class Base
 
     public function before(UserInterface $user, $ability)
     {
-        return $user && $user->isSuperAdmin() ? true : null; 
+        return $user && $user->isSuperAdmin() ? true : null;
     }
 }

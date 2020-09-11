@@ -5,5 +5,4 @@ use App\Http\Controllers\ApiController;
 
 class Controller extends ApiController
 {
-
 }

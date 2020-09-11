@@ -13,14 +13,14 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-        	'name'=>'abcxyz',
-        	'email'=>'email@gmail.com',
-        	'password'=>bcrypt('123456'),
+            'name'=>'abcxyz',
+            'email'=>'email@gmail.com',
+            'password'=>bcrypt('123456'),
         ]);
         $faker=Faker\Factory::create();
-        for($i=0;$i< 10;$i++){
+        for ($i=0; $i< 10; $i++) {
             DB::table('users')->insert([
-            	'name'=>$faker->name(),
+                'name'=>$faker->name(),
                 'email'=>$faker->email(),
                 'password'=>bcrypt('123456')
             ]);

@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Base;
 
-
 use App\Models\Admin;
 
 abstract class AdminRepository extends BaseRepository

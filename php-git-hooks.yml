@@ -11,7 +11,7 @@ pre-commit:
         options: "--fixers=short_array_syntax --diff"
     phpunit:
         enabled:     true
-        random-mode: true
+        random-mode: false
         options:     ''
         strict-coverage:
              enabled:       true
@@ -23,7 +23,7 @@ pre-commit:
     phpcs:
         enabled:     true
         standard:    PSR2
-        ignore:      '*/migrations/*'
+        ignore:      '*/migrations/*, */seeds/*'
     phpmd:
         enabled:     true
         options:     '--exclude vendor/*'

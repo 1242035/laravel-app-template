@@ -35,6 +35,5 @@ class Init extends Base
      */
     public function handle()
     {
-        
     }
 }

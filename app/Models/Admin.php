@@ -2,16 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Passport\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Admin extends Authenticatable implements UserInterface
+class Admin extends BaseAuth
 {
-    use Notifiable, HasApiTokens, HasRoles, SoftDeletes;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -28,31 +20,17 @@ class Admin extends Authenticatable implements UserInterface
         'last_logged_in_at',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
     protected $casts = [
         'last_logged_in_at' => 'datetime',
     ];
 
-    public function findForPassport($username)
-    {
-        return $this->where('username', $username)->orWhere('email', $username)->orWhere('phone', $username)->first();
-    }
-
-    public function isSuperAdmin() 
-    {
-        return $this->hasRole('root');
-    }
-
-    public function isAdminAccount() 
+    public function isAdminAccount()
     {
         return true;
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->hasRole('root');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Closure;
 
 class AuthenticateProvider
@@ -9,8 +10,7 @@ class AuthenticateProvider
     {
         $provider = $request->header('X-Request-Provider');
 
-        if( !$this->support( $provider ) ) 
-        {
+        if (!$this->support($provider)) {
             $provider = 'api';
         }
         
@@ -21,6 +21,6 @@ class AuthenticateProvider
 
     private function support($provider)
     {
-        return in_array($provider, ['api', 'admin', 'web'] );
+        return in_array($provider, ['api', 'admin', 'web']);
     }
 }

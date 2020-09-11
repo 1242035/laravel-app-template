@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Base;
 
-
 use App\Models\Role;
 
 abstract class RoleRepository extends BaseRepository
@@ -19,7 +18,7 @@ abstract class RoleRepository extends BaseRepository
 
     public function getAll($params = [], $page = 1, $limit = 25)
     {
-        return Role::paginate( $limit );
+        return Role::paginate($limit);
     }
 
     public function update(array $data, $id)

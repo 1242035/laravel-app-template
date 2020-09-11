@@ -40,18 +40,18 @@ class InitRole extends Base
 
         $repository = new \App\Repositories\Admin\V1\RoleRepository();
 
-        foreach($adminRoles as $role) {
+        foreach ($adminRoles as $role) {
             $repository->store([
                 'name' => $role,
                 'guard_name' => 'admin'
-            ]);  
+            ]);
         }
 
-        foreach($apiRoles as $role) {
+        foreach ($apiRoles as $role) {
             $repository->store([
                 'name' => $role,
                 'guard_name' => 'api'
-            ]);  
+            ]);
         }
     }
 }

@@ -39,7 +39,7 @@ class InitPermission extends Base
         
         $repository = new \App\Repositories\Admin\V1\PermissionRepository();
 
-        foreach($permissions as $permission) {
+        foreach ($permissions as $permission) {
             $repository->store([
                 'name'       => $permission,
                 'guard_name' => 'admin'
@@ -48,7 +48,7 @@ class InitPermission extends Base
             $repository->store([
                 'name'       => $permission,
                 'guard_name' => 'api'
-            ]);  
+            ]);
         }
     }
 }

@@ -17,18 +17,17 @@ class Language
     {
         $lang = $request->header('X-Request-Language');
 
-        if( !$this->support( $lang ) ) 
-        {
+        if (!$this->support($lang)) {
             $lang = config('app.locale');
         }
         
-        app()->setLocale( $lang );
+        app()->setLocale($lang);
 
         return $next($request);
     }
 
     private function support($lang)
     {
-        return in_array($lang, config('app.locales') );
+        return in_array($lang, config('app.locales'));
     }
 }
