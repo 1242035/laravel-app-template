@@ -1,98 +1,61 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-## Technology
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-- PHP version > 7.2.*
-- Laravel 7.2.*.
-- MySQL 5.7.* or MariaDB 10.1.*
-## Install
+## About Laravel
 
-**1.Clone source code with SSH**
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-```shell
-$ git clone https://github.com/1242035/laravel-app-template.git
-```
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-**2.Run composer & config file `.env`**
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-```shell
-$ cd /path/project
-$ composer install
-$ cp .env.example .env
-```
+## Learning Laravel
 
-- Change some contents in file `.env`
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=template
-DB_USERNAME=root
-DB_PASSWORD=
-```
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-**3.Database & Migrate**
-```shell
-$ php artisan migrate
-$ php artisan db:seed
-```
-**4.Config apache & Start**
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-```apacheconfig
-<VirtualHost *:80>
-    ServerAdmin admin@gmail.com
-    DocumentRoot "/path/project/public"
-    ServerName  domain.com
-    ErrorLog "logs/domain.com-error.log"
-    CustomLog "logs/domain.com-access.log" common
-    <Directory "/path/project/public">
-        Options FollowSymLinks
-        AllowOverride All
-        DirectoryIndex index.php index.html
-        Require all granted
-    </Directory>
-</VirtualHost>
-```
+## Laravel Sponsors
 
-**5.Setting Email**
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-- Email: Change some contents in file `.env`
-```
-MAIL_DRIVER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=email@gmail.com
-MAIL_PASSWORD=password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_NAME="SUPPORT"
-MAIL_FROM_ADDRESS=email@gmail.com
-```
-**6.Install & Configure Supervisor**
+### Premium Partners
 
-[Guide Install Supervisor](https://laravel.com/docs/5.8/queues#supervisor-configuration)
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[OP.GG](https://op.gg)**
 
-- Configure Supervisor
+## Contributing
 
-Create a config file `/etc/supervisor/conf.d/worker.conf` and add below content.
-Change `user=login user on enviroment`
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-```
-[program:worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php /path/project/artisan queue:work --sleep=3 --tries=3
-autostart=true
-autorestart=true
-user=deployer
-numprocs=8
-redirect_stderr=true
-stdout_logfile=/path/project/storage/logs/worker.log
-```
+## Code of Conduct
 
-- Starting `Supervisor`
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-```shell
-$ sudo supervisorctl reread
+## Security Vulnerabilities
 
-$ sudo supervisorctl update
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-$ sudo supervisorctl start worker:*
-```
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

@@ -1,0 +1,38 @@
+version: "3.8"
+volumes:
+  db-store:
+  php-fpm-socket:
+services:
+  app:
+    build: ./php
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm
+      - ../:/work/app
+
+  web:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - php-fpm-socket:/var/run/php-fpm
+      - ../:/work/app
+
+  db:
+    build: ./mysql
+    volumes:
+      - db-store:/var/lib/mysql
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=app_user
+      - PMA_PASSWORD=app_secret
+    ports:
+      - "3000:80"
+    volumes:
+      - ./phpmyadmin/sessions:/sessions

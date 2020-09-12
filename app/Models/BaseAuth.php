@@ -7,11 +7,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use App\Models\Traits\BaseEventTrait;
 
 abstract class BaseAuth extends Authenticatable implements UserInterface
 {
-    use Notifiable, HasApiTokens, HasRoles, SoftDeletes, BaseEventTrait;
+    use Notifiable, HasFactory, HasApiTokens, HasRoles, SoftDeletes, BaseEventTrait;
 
     
     protected $hidden = [
