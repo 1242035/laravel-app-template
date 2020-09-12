@@ -4,9 +4,11 @@
 /storage/*.key
 /storage/app
 /vendor
+/bin
 .env
 .env.backup
 .phpunit.result.cache
+.php_cs.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
