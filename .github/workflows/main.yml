@@ -1,5 +1,8 @@
-name: App action
-
+name: Deploy
+on:
+  push:
+    branches:
+      - master # Changing the branch here would also work
 jobs:
   tests:
     runs-on: ubuntu-latest

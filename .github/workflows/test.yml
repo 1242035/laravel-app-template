@@ -1,0 +1,24 @@
+name: Testing
+on: [push]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup git config
+      run: |
+        git config --global user.email "chidungdekiemtra@gmail.com"
+        git config --global user.name "1242035"
+    - name: Copy ENV Laravel Configuration for CI
+      run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
+    - name: Install Dependencies (PHP vendors)
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Create DB and schemas
+      run: |
+        touch database/database.sqlite
+        php artisan migrate
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: bin/phpunit
