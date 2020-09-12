@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Setup git config
+      run: |
+        git config --global user.email "chidungdekiemtra@gmail.com"
+        git config --global user.name "1242035"
     - name: Copy ENV Laravel Configuration for CI
       run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
     - name: Install Dependencies (PHP vendors)
@@ -26,6 +30,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup git config
+        run: |
+          git config --global user.email "chidungdekiemtra@gmail.com"
+          git config --global user.name "1242035"
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
         with:
