@@ -25,7 +25,7 @@ jobs:
     - name: Generate key
       run: php artisan key:generate
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: vendor/bin/phpunit
+      run: bin/phpunit
   build:
     runs-on: ubuntu-latest
     steps:
@@ -39,7 +39,8 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          procfile: "web: bin/heroku-php-apache2 public/"
+          branch: master
           healthcheck: "https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
-          procfile: "web: bin/heroku-php-apache2 public/"
