@@ -1,12 +1,27 @@
-name: Deploy
-
-on:
-  push:
-    branches:
-      - master # Changing the branch here would also work
+name: App action
 
 jobs:
-  build:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup git config
+      run: |
+        git config --global user.email "chidungdekiemtra@gmail.com"
+        git config --global user.name "1242035"
+    - name: Copy ENV Laravel Configuration for CI
+      run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
+    - name: Install Dependencies (PHP vendors)
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Create DB and schemas
+      run: |
+        touch database/database.sqlite
+        php artisan migrate
+    - name: Generate key
+      run: php artisan key:generate
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: bin/phpunit
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Setup git config
@@ -15,7 +30,6 @@ jobs:
           git config --global user.name "1242035"
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
-      - run: git fetch --prune --unshallow
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
