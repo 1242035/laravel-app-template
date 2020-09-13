@@ -1,2 +1,2 @@
-release: php artisan migrate:refresh --force && php artisan db:seed
+release: php artisan migrate:refresh --seed --force && php artisan passport:install && php artisan passport:client --password --name="admin client cridential" --provider="admin" && php artisan passport:client --password --name="api client cridential" --provider="api"
 web: bin/heroku-php-apache2 public/

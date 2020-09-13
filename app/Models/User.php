@@ -17,7 +17,7 @@ class User extends BaseAuth
      * @var array
      */
     protected $fillable = [
-        'username',
+        'user_name',
         'email',
         'phone',
         'password',

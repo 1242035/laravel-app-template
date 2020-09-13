@@ -4,67 +4,67 @@ namespace App\Models\Traits;
 
 trait BaseEventTrait
 {
-    public function retrieved()
+    public static function retrieved( $model )
     {
-        $this->raise('retrieved');
+        self::raise('retrieved', $model);
     }
 
-    public function creating()
+    public static function creating( $model )
     {
-        $this->raise('creating');
+        self::raise('creating', $model);
     }
     
-    public function created()
+    public static function created( $model )
     {
-        $this->raise('created');
+        self::raise('created', $model);
     }
     
-    public function updating()
+    public static function updating( $model )
     {
-        $this->raise('updating');
+        self::raise('updating', $model);
     }
     
-    public function updated()
+    public static function updated( $model )
     {
-        $this->raise('updated');
+        self::raise('updated', $model);
     }
     
-    public function saving()
+    public static function saving( $model )
     {
-        $this->raise('saving');
+        self::raise('saving', $model);
     }
     
-    public function saved()
+    public static function saved( $model )
     {
-        $this->raise('saved');
+        self::raise('saved', $model);
     }
     
-    public function deleting()
+    public static function deleting( $model )
     {
-        $this->raise('deleting');
+        self::raise('deleting', $model);
     }
     
-    public function deleted()
+    public static function deleted( $model )
     {
-        $this->raise('deleted');
+        self::raise('deleted', $model);
     }
     
-    public function restoring()
+    public static function restoring( $model )
     {
-        $this->raise('restoring');
+        self::raise('restoring', $model);
     }
     
-    public function restored()
+    public static function restored( $model )
     {
-        $this->raise('restored');
+        self::raise('restored', $model);
     }
 
-    protected function raise($method)
+    public static function raise($method, $model)
     {
-        $className = get_class($this);
-        $classEvent = '\\App\\Events\\Models\\' . $className . strtoupper($method);
+        $className = get_class($model);
+        $classEvent = '\\App\\Events\\Models\\' . $className . ucfirst($method);
         if (class_exists($classEvent)) {
-            event(new $classEvent($this));
+            event(new $classEvent( $model ));
         }
     }
 }

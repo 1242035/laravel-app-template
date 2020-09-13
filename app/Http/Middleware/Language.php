@@ -28,6 +28,6 @@ class Language
 
     private function support($lang)
     {
-        return in_array($lang, config('app.locales'));
+        return in_array($lang, config('app.locales', ['en']));
     }
 }

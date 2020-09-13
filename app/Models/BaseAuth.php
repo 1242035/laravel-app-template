@@ -13,9 +13,11 @@ use App\Models\Traits\BaseEventTrait;
 
 abstract class BaseAuth extends Authenticatable implements UserInterface
 {
-    use Notifiable, HasFactory, HasApiTokens, HasRoles, SoftDeletes, BaseEventTrait;
+    use Notifiable, HasFactory, HasApiTokens, HasRoles;
 
-    
+    use BaseEventTrait { restore as private restoreA; restoring as private restoringA; restored as private restoredA; }
+    use SoftDeletes { restore as private restoreB; restoring as private restoringB; restored as private restoredB; }
+
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -23,6 +25,27 @@ abstract class BaseAuth extends Authenticatable implements UserInterface
 
     public function findForPassport($username)
     {
-        return $this->where('username', $username)->orWhere('email', $username)->orWhere('phone', $username)->first();
+        return $this->where('user_name', $username)->orWhere('email', $username)->orWhere('phone', $username)->first();
+    }
+
+    /**
+     * fix collision on restore methods in SoftDelete trait and Entrust trait
+     */
+    public function restore()
+    {
+        $this->restoreA();
+        $this->restoreB();
+    }
+
+    public function restoring()
+    {
+        $this->restoringA();
+        $this->restoringB();
+    }
+
+    public function restored()
+    {
+        $this->restoredA();
+        $this->restoredB();
     }
 }
