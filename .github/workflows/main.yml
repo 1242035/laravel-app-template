@@ -37,12 +37,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-          procfile: "web: bin/heroku-php-apache2 public/"
           branch: master
           checkstring: "ok"
           delay: 5
           dontuseforce: 0
-      - name: Create DB and schemas
-        run: |
-          php artisan migrate:refresh
-          php artisan db:seed
