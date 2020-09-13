@@ -39,7 +39,6 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           procfile: "web: bin/heroku-php-apache2 public/"
           branch: master
-          healthcheck: "https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
-          dontuseforce: false
+          dontuseforce: 0
