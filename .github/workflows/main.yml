@@ -42,3 +42,7 @@ jobs:
           checkstring: "ok"
           delay: 5
           dontuseforce: 0
+      - name: Create DB and schemas
+        run: |
+          php artisan migrate:refresh
+          php artisan db:seed
