@@ -23,12 +23,12 @@ init:
 	docker-compose exec app php artisan storage:link
 	docker-compose exec app php artisan migrate:fresh --seed
 	docker-compose exec app php artisan passport:install
-	docker-compose exec web yarn
-	docker-compose exec web yarn dev
+	docker-compose exec app yarn
+	docker-compose exec app yarn dev
 update:
 	docker-compose exec app composer update --ignore-platform-reqs
-	docker-compose exec web yarn
-	docker-compose exec web yarn dev
+	docker-compose exec app yarn
+	docker-compose exec app yarn dev
 	docker-compose exec app php artisan config:cache
 remake:
 	@make destroy
@@ -53,7 +53,7 @@ logs:
 logs-watch:
 	docker-compose logs --follow
 web:
-	docker-compose exec web ash
+	docker-compose exec nginx ash
 app:
 	docker-compose exec app bash
 migrate:
@@ -86,31 +86,31 @@ cache-clear:
 npm:
 	@make npm-install
 npm-install:
-	docker-compose exec web npm install
+	docker-compose exec app npm install
 npm-dev:
-	docker-compose exec web npm run dev
+	docker-compose exec app npm run dev
 npm-watch:
-	docker-compose exec web npm run watch
+	docker-compose exec app npm run watch
 npm-watch-poll:
-	docker-compose exec web npm run watch-poll
+	docker-compose exec app npm run watch-poll
 npm-hot:
-	docker-compose exec web npm run hot
+	docker-compose exec app npm run hot
 yarn:
-	docker-compose exec web yarn
+	docker-compose exec app yarn
 yarn-install:
 	@make yarn
 yarn-dev:
-	docker-compose exec web yarn dev
+	docker-compose exec app yarn dev
 yarn-watch:
-	docker-compose exec web yarn watch
+	docker-compose exec app yarn watch
 yarn-watch-poll:
-	docker-compose exec web yarn watch-poll
+	docker-compose exec app yarn watch-poll
 yarn-hot:
-	docker-compose exec web yarn hot
+	docker-compose exec app yarn hot
 db:
-	docker-compose exec db bash
+	docker-compose exec mysql bash
 sql:
-	docker-compose exec db bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
+	docker-compose exec mysql bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
 redis:
 	docker-compose exec redis redis-cli
 ide-helper:

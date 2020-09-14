@@ -12,8 +12,8 @@ ENV TZ=UTC \
   COMPOSER_HOME=/composer \
   # Laravel environment
   DB_CONNECTION=mysql \
-  DB_HOST=db \
-  DB_PORT=3306 \
+  DB_HOST=mysql \
+  DB_PORT=3307 \
   DB_DATABASE=app_db \
   DB_USERNAME=app_user \
   DB_PASSWORD=app_secret \
@@ -36,4 +36,4 @@ RUN apt-get update && \
 COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./php.ini /usr/local/etc/php/php.ini
 
-WORKDIR /work/app
+WORKDIR /work/www/html

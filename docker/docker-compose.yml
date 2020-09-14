@@ -7,32 +7,33 @@ services:
     build: ./php
     volumes:
       - php-fpm-socket:/var/run/php-fpm
-      - ../:/work/app
+      - ../:/work/www/html
 
-  web:
+  nginx:
     build: ./nginx
     ports:
-      - 80:80
+      - 8080:80
     volumes:
       - php-fpm-socket:/var/run/php-fpm
-      - ../:/work/app
+      - ../:/work/www/html
 
-  db:
+  mysql:
     build: ./mysql
     volumes:
       - db-store:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 3307:3306
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
-      - db
+      - mysql
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=db
+      - PMA_HOSTS=mysql
       - PMA_USER=app_user
+      - PMA_PORT=3307
       - PMA_PASSWORD=app_secret
     ports:
-      - "3000:80"
+      - "6002:80"
     volumes:
       - ./phpmyadmin/sessions:/sessions
