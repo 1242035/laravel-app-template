@@ -23,12 +23,12 @@ init:
 	docker-compose exec app php artisan storage:link
 	docker-compose exec app php artisan migrate:fresh --seed
 	docker-compose exec app php artisan passport:install
-	docker-compose exec app yarn
-	docker-compose exec app yarn dev
+	docker-compose exec nginx yarn
+	docker-compose exec nginx yarn dev
 update:
 	docker-compose exec app composer update --ignore-platform-reqs
-	docker-compose exec app yarn
-	docker-compose exec app yarn dev
+	docker-compose exec nginx yarn
+	docker-compose exec nginx yarn dev
 	docker-compose exec app php artisan config:cache
 remake:
 	@make destroy

@@ -23,6 +23,6 @@ abstract class ApiController extends \App\Http\Controllers\Controller
 
     protected function response($data = [], $code = 500)
     {
-        return api_response($data, $code);
+        return app_response($data, $code);
     }
 }

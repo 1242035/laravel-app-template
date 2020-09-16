@@ -2,6 +2,8 @@ version: "3.8"
 volumes:
   db-store:
   php-fpm-socket:
+  redis-data:
+
 services:
   app:
     build: ./php
@@ -37,3 +39,14 @@ services:
       - "6002:80"
     volumes:
       - ./phpmyadmin/sessions:/sessions
+  redis:
+    image: redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+  supervisord:
+    build: ./supervisord
+    ports:
+      - 9001:9001
+    volumes:
+      - ../:/work/www/html
