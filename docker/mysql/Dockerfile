@@ -1,4 +1,4 @@
-FROM mysql:8.0
+FROM mysql:8.4
 
 ENV TZ=UTC \
   MYSQL_DATABASE=app_db \
